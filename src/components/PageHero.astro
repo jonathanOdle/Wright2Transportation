@@ -1,0 +1,80 @@
+---
+import ButtonLink from './ButtonLink.astro';
+
+interface Action {
+	href: string;
+	label: string;
+	variant?: 'primary' | 'secondary' | 'ghost';
+	analyticsEvent?: string;
+}
+
+interface Props {
+	eyebrow?: string;
+	title: string;
+	description: string;
+	primaryAction?: Action;
+	secondaryAction?: Action;
+	visualTitle?: string;
+	visualCopy?: string;
+	visualLabel?: string;
+	showTexasMark?: boolean;
+	height?: 'home' | 'page';
+}
+
+const {
+	eyebrow,
+	title,
+	description,
+	primaryAction,
+	secondaryAction,
+	visualTitle = 'Dry bulk transportation',
+	visualCopy = 'Built for highways, terminals, plants, and the demands of specialized hauling.',
+	visualLabel = 'Texas dry bulk focus',
+	showTexasMark = false,
+	height = 'page',
+} = Astro.props;
+---
+
+<section class:list={["hero", height === 'home' && 'hero--home']}>
+	<div class="container hero__grid">
+		<div class="hero__content">
+			{eyebrow && <p class="eyebrow">{eyebrow}</p>}
+			<h1>{title}</h1>
+			<p class="hero__description">{description}</p>
+			{(primaryAction || secondaryAction) && (
+				<div class="hero__actions">
+					{primaryAction && (
+						<ButtonLink
+							href={primaryAction.href}
+							variant={primaryAction.variant ?? 'primary'}
+							analyticsEvent={primaryAction.analyticsEvent}
+						>
+							{primaryAction.label}
+						</ButtonLink>
+					)}
+					{secondaryAction && (
+						<ButtonLink
+							href={secondaryAction.href}
+							variant={secondaryAction.variant ?? 'secondary'}
+						>
+							{secondaryAction.label}
+						</ButtonLink>
+					)}
+				</div>
+			)}
+		</div>
+		<div class="hero__visual" aria-hidden="true">
+			<div class="hero__visual-frame">
+				<p class="hero__visual-label">{visualLabel}</p>
+				<h2>{visualTitle}</h2>
+				<p>{visualCopy}</p>
+				<div class="hero__truck">
+					<span class="hero__truck-cab"></span>
+					<span class="hero__truck-trailer"></span>
+					<span class="hero__truck-road"></span>
+				</div>
+				{showTexasMark && <img class="hero__texas" src="/brand/texas-outline.svg" alt="" />}
+			</div>
+		</div>
+	</div>
+</section>

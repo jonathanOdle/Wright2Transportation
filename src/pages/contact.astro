@@ -1,0 +1,7 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SimpleHero from '../components/SimpleHero.astro';
+import InquiryForm from '../components/InquiryForm.astro';
+import {company} from '../data/company';
+---
+<Layout title="Contact Wright 2 Transportation" pathname="/contact" description="Discuss fly ash and dry bulk transportation needs with Wright 2 Transportation in Texas."><SimpleHero label="Contact" title="Let's talk." description="Tell us about your material, locations, and transportation needs. Our team can help you work through the details."/><section class="section section--light"><div class="container"><div class="section-intro"><div><p class="eyebrow">For businesses</p><h2>Transportation inquiry.</h2><p style="margin-top:20px">Start a conversation. This is an inquiry, not an instant quote or confirmed booking.</p></div><div><h3>Interested in driving?</h3><p style="margin-top:12px">Head to our <a class="text-link" href="/drivers#application">driver application →</a></p>{company.contacts.mainPhone&&<p><a href={`tel:${company.contacts.mainPhone}`} data-analytics-event="business_phone_clicked">{company.contacts.mainPhone}</a></p>}{company.contacts.businessEmail&&<p><a href={`mailto:${company.contacts.businessEmail}`}>{company.contacts.businessEmail}</a></p>}{company.contacts.addressLines.map(line=><p>{line}</p>)}</div></div><InquiryForm kind="transportation"/></div></section></Layout>

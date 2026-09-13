@@ -1,0 +1,21 @@
+---
+import type { DriverRequirement } from '../data/company';
+
+interface Props {
+	items: DriverRequirement[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul class="check-list">
+	{items.map((item) => (
+		<li>
+			<span aria-hidden="true"></span>
+			<div>
+				<strong>{item.label}</strong>
+				{item.note && <p>{item.note}</p>}
+			</div>
+		</li>
+	))}
+</ul>

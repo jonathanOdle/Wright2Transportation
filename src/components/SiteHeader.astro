@@ -1,0 +1,82 @@
+---
+import BrandSignature from './BrandSignature.astro';
+import ButtonLink from './ButtonLink.astro';
+import { company, hasValue } from '../data/company';
+
+interface Props {
+	currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+const recruitingPhoneHref = hasValue(company.contacts.recruitingPhone)
+	? `tel:${company.contacts.recruitingPhone.replace(/[^\d+]/g, '')}`
+	: '';
+---
+
+<header class="site-header">
+	<div class="container site-header__inner">
+		<a class="site-header__brand" href="/" aria-label={`${company.name} home`}>
+			<BrandSignature showTagline={false} />
+		</a>
+
+		<nav class="site-nav" aria-label="Primary">
+			<ul>
+				{company.navigation.map((item) => (
+					<li>
+						<a aria-current={currentPath === item.href ? "page" : undefined} class:list={[currentPath === item.href && 'is-current', item.highlight && 'is-highlight']} href={item.href}>
+							{item.label}
+						</a>
+					</li>
+				))}
+			</ul>
+		</nav>
+
+		<div class="site-header__actions">
+			{recruitingPhoneHref && (
+				<a href={recruitingPhoneHref} class="site-header__contact" data-analytics-event={company.analytics.events.recruitingPhoneClicked}>
+					{company.contacts.recruitingPhone}
+				</a>
+			)}
+			<ButtonLink href="/drivers#application" analyticsEvent={company.analytics.events.driveWithUsClicked}>Drive With Us</ButtonLink>
+		</div>
+
+		<details class="mobile-nav">
+			<summary aria-label="Open navigation menu" aria-controls="mobile-navigation">
+				<span class="menu-mark" aria-hidden="true"><span></span><span></span></span>
+			</summary>
+			<div class="mobile-nav__panel" id="mobile-navigation">
+				<nav aria-label="Mobile primary">
+					<ul>
+						{company.navigation.map((item) => (
+							<li>
+								<a aria-current={currentPath === item.href ? "page" : undefined} class:list={[currentPath === item.href && 'is-current', item.highlight && 'is-highlight']} href={item.href}>
+									{item.label}
+								</a>
+							</li>
+						))}
+					</ul>
+				</nav>
+				<ButtonLink href="/drivers#application" analyticsEvent={company.analytics.events.driveWithUsClicked}>Drive With Us</ButtonLink>
+			</div>
+		</details>
+	</div>
+</header>
+
+<script>
+	for (const details of document.querySelectorAll<HTMLDetailsElement>('.mobile-nav')) {
+        details.addEventListener('toggle', () => {
+            details.querySelector('summary')?.setAttribute('aria-label', details.open ? 'Close navigation menu' : 'Open navigation menu');
+        });
+        document.addEventListener('click', (event) => {
+            if (event.target instanceof Node && !details.contains(event.target)) details.open = false;
+        });
+		for (const link of details.querySelectorAll('a')) {
+			link.addEventListener('click', () => {
+				details.removeAttribute('open');
+			});
+		}
+	}
+</script>
+<script>
+ document.addEventListener('keydown', (event) => { if(event.key === 'Escape') { const menu = document.querySelector('.mobile-nav[open]'); menu?.removeAttribute('open'); menu?.querySelector('summary')?.focus(); } });
+</script>

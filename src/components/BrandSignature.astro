@@ -1,0 +1,79 @@
+---
+import { company } from '../data/company';
+
+interface Props {
+	compact?: boolean;
+	showTagline?: boolean;
+	className?: string;
+}
+
+const { compact = false, showTagline = true, className = '' } = Astro.props;
+---
+
+<div class={`brand-signature ${compact ? 'brand-signature--compact' : ''} ${className}`.trim()}>
+	{company.brand.logoPath ? (
+		<img class="brand-signature__logo" width="2172" height="724" src={company.brand.logoPath} alt={company.brand.logoAlt} />
+	) : (
+		<div class="brand-signature__lockup" aria-label={company.name}>
+			<span class="brand-signature__road" aria-hidden="true"></span>
+			<span class="brand-signature__name">Wright <strong>2</strong> Transportation</span>
+			{showTagline && <span class="brand-signature__tagline">{company.tagline}</span>}
+		</div>
+	)}
+</div>
+
+<style>
+	.brand-signature {
+		display: inline-flex;
+		align-items: center;
+	}
+
+	.brand-signature__logo {
+		display: block;
+		height: auto;
+		max-width: min(17rem, 44vw);
+	}
+
+	.brand-signature__lockup {
+		display: grid;
+		gap: 0.12rem;
+		position: relative;
+		padding-left: 1rem;
+	}
+
+	.brand-signature__road {
+		position: absolute;
+		left: 0;
+		top: 0.42rem;
+		width: 0.55rem;
+		height: 2rem;
+		border-radius: 999px;
+		background: linear-gradient(180deg, var(--color-accent), transparent 85%);
+		box-shadow: 0 0 0 1px rgb(255 255 255 / 0.08);
+	}
+
+	.brand-signature__name {
+		font-family: var(--font-display);
+		font-size: clamp(1.1rem, 2vw, 1.45rem);
+		font-style: italic;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	.brand-signature__name strong {
+		color: var(--color-accent);
+	}
+
+	.brand-signature__tagline {
+		color: var(--color-muted);
+		font-size: 0.75rem;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+
+	.brand-signature--compact .brand-signature__tagline {
+		display: none;
+	}
+</style>

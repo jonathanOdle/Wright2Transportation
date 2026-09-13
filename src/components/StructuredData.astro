@@ -1,0 +1,57 @@
+---
+import { company, hasValue } from '../data/company';
+
+interface Props {
+	pathname: string;
+}
+
+const { pathname } = Astro.props;
+const siteUrl = Astro.site?.toString();
+const organizationId = siteUrl ? `${siteUrl}#organization` : '#organization';
+const localBusinessId = siteUrl ? `${siteUrl}#local-business` : '#local-business';
+
+const graph: Record<string, unknown>[] = [
+	{
+		'@type': 'Organization',
+		'@id': organizationId,
+		name: company.name,
+		description: company.seo.defaultDescription,
+		url: siteUrl,
+		areaServed: company.serviceAreaLabel,
+		slogan: company.tagline,
+		knowsAbout: company.materials,
+		...(company.socialLinks.length > 0 ? { sameAs: company.socialLinks.map((link) => link.href) } : {}),
+	},
+];
+
+if (hasValue(company.contacts.mainPhone) || hasValue(company.contacts.businessEmail) || hasValue(company.contacts.addressLines)) {
+	graph.push({
+		'@type': 'LocalBusiness',
+		'@id': localBusinessId,
+		name: company.name,
+		url: siteUrl,
+		telephone: hasValue(company.contacts.mainPhone) ? company.contacts.mainPhone : undefined,
+		email: hasValue(company.contacts.businessEmail) ? company.contacts.businessEmail : undefined,
+		address: hasValue(company.contacts.addressLines)
+			? {
+				'@type': 'PostalAddress',
+				streetAddress: company.contacts.addressLines.join(', '),
+			}
+			: undefined,
+	});
+}
+
+graph.push({
+	'@type': 'WebPage',
+	name: pathname === '/' ? company.seo.defaultTitle : `${company.name} page`,
+	url: siteUrl ? new URL(pathname, siteUrl).toString() : pathname,
+	about: { '@id': organizationId },
+});
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': graph,
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

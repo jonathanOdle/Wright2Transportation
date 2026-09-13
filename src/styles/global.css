@@ -1,0 +1,234 @@
+@import '@fontsource/barlow/400.css';
+@import '@fontsource/barlow/600.css';
+@import '@fontsource/barlow/700.css';
+@import '@fontsource/barlow-condensed/700.css';
+:root{--color-bg:#101216;--color-accent:#0058e8;--color-muted:#afb7c4;--font-display:'Barlow Condensed',sans-serif;--font-body:'Barlow',sans-serif;--color-heading:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:110px}body{margin:0;background:#101216;color:#e7eaf0;font:17px/1.65 var(--font-body)}img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}h1,h2,h3,p{margin:0}h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.03;text-transform:uppercase}h1{font-size:clamp(3.4rem,7vw,6.8rem);letter-spacing:-.02em}h2{font-size:clamp(2.2rem,4vw,3.6rem)}h3{font-size:1.7rem}p+p{margin-top:1rem}ul{padding:0;list-style:none}.container{width:min(1180px,calc(100% - 64px));margin-inline:auto}.site-header{position:sticky;top:0;background:#101216;z-index:50;border-bottom:1px solid #2a2e34}.site-header__inner{min-height:95px;display:flex;align-items:center;gap:28px;justify-content:space-between}.site-header__brand{flex-shrink:0}.brand-signature__logo{width:245px}.site-nav ul{display:flex;gap:22px;margin:0;font-size:14px;font-weight:600}.site-nav a{padding-block:34px;display:block;border-bottom:2px solid transparent}.site-nav a:hover,.site-nav .is-current{border-color:#0058e8;color:#0058e8}.site-header__contact{display:none}.button{display:inline-flex;justify-content:center;align-items:center;gap:22px;padding:14px 24px;background:#0058e8;color:#fff;border:1px solid #0058e8;font-weight:700;line-height:1.5;cursor:pointer;transition:background .15s}.button:hover{background:#0048c0}.button--secondary{background:transparent;border-color:#69717f}.button--secondary:hover{background:#262e3a}.button:disabled{opacity:.6;cursor:not-allowed}.site-header .button{font-size:14px;padding:12px 18px;white-space:nowrap}.mobile-nav{display:none}.eyebrow{text-transform:uppercase;font-size:12px;letter-spacing:.19em;font-weight:700;color:#94b9ff;margin-bottom:20px}.home-hero{background:linear-gradient(115deg,#101216 55%,#182436);border-bottom:1px solid #39404a}.home-hero__inner{padding-top:80px}.home-hero h1{font-size:clamp(4.5rem,10vw,9rem);line-height:.94;max-width:900px}.home-hero h1 span{color:#0058e8}.lead{font-size:clamp(1.2rem,2vw,1.55rem);line-height:1.5;margin-top:25px}.hero-copy{color:#b6beca;max-width:580px;margin-top:14px}.actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:30px}.hero-bottom{display:flex;justify-content:space-between;gap:20px;border-top:1px solid #3b434e;padding:24px 0;margin-top:65px;font-size:11px;font-weight:600;letter-spacing:.14em;color:#b7c1d0}.recruit-band{background:#0058e8;padding:28px 0}.band-inner{display:flex;align-items:center;justify-content:space-between;gap:28px}.recruit-band .eyebrow{color:#e5edf3;margin-bottom:8px}.recruit-band h2{font-size:2rem}.band-inner>a{font-weight:700;border-bottom:1px solid #fff;padding-bottom:5px}.band-inner>a span{margin-left:30px}.section{padding:80px 0}.section--light{background:#f4f4f1;color:#222833}.section--light .eyebrow{color:#0050d0}.section-intro,.split-layout{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}.section-intro>p{max-width:430px;align-self:end;color:#535e6d}.service-list{margin-top:40px}.service-row{display:grid;grid-template-columns:60px 1fr 30px;gap:20px;align-items:center;border-top:1px solid #cbd0d5;padding:27px 0}.service-row:last-child{border-bottom:1px solid #cbd0d5}.service-row p{margin-top:9px;color:#535e6d}.service-row:hover h3{color:#0050d0}.row-number{font-size:13px;letter-spacing:.12em;color:#0058e8}.split-layout .lead{margin-top:0;margin-bottom:16px}.text-link{font-weight:700;text-decoration:underline;text-underline-offset:5px}.simple-hero{padding:65px 0;background:#151c26;border-bottom:3px solid #0058e8}.simple-hero h1{max-width:900px}.simple-hero .lead{max-width:760px;color:#bac4d3}.reading-list{max-width:950px}.reading-list article{display:grid;grid-template-columns:45px 1fr;gap:20px;border-bottom:1px solid #cbd0d5;padding:30px 0}.reading-list article:first-child{padding-top:0}.reading-list h2{font-size:2rem;margin-bottom:14px}.reading-list p{max-width:730px}.site-footer{background:#0c0e12;border-top:1px solid #303640;padding-top:50px}.site-footer__grid{display:grid;grid-template-columns:2fr 1fr 1.4fr 1fr;gap:40px;padding-bottom:45px}.site-footer__description{max-width:260px;font-size:15px;color:#adb7c5;margin-top:20px}.site-footer__title{text-transform:uppercase;font-size:12px;letter-spacing:.12em;font-weight:700}.site-footer__list{font-size:14px;color:#adb7c5;display:grid;gap:9px}.site-footer a:hover{color:#94b9ff}.site-footer__bottom{border-top:1px solid #282e37;padding:22px 0}.site-footer__bottom-inner{display:flex;justify-content:space-between;gap:15px;font-size:12px;color:#a4afbd}.skip-link{position:fixed;top:-100px;left:16px;z-index:100;background:white;color:#111;padding:12px}.skip-link:focus{top:12px}:focus-visible{outline:3px solid #0058e8;outline-offset:5px}form{max-width:900px;margin-top:35px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.field{display:grid;gap:7px;align-content:start}.field label{font-size:15px;font-weight:600}.field input,.field select,.field textarea{width:100%;min-width:0;border:1px solid #a3adba;border-radius:0;background:#fff;color:#17212e;padding:12px;min-height:48px}.field textarea{min-height:125px}.field-wide{grid-column:1/-1}.field-error{color:#a31b20;font-size:13px}.field [aria-invalid=true]{border:2px solid #a31b20}.form-status,.form-errors,.form-notice{padding:16px;border-left:3px solid #0058e8;background:#e4ebf4;margin:20px 0}.form-errors,.form-status[data-status=error]{border-color:#a31b20}.form-errors ul{list-style:disc;padding-left:22px}.consent{display:flex;gap:12px;align-items:start;margin:24px 0}.consent input{width:20px;height:20px;flex-shrink:0}.honeypot{display:none}.check-list{list-style:disc;padding-left:22px}.check-list li{margin:10px 0}.fine-print{font-size:14px;color:#535e6d}.form-section-title{font-size:1.6rem;margin:30px 0 18px}details.faq{border-bottom:1px solid #cbd0d5;padding:20px 0}details.faq summary{cursor:pointer;font-weight:700}details.faq p{margin-top:12px}
+@media(max-width:1100px){.site-nav{display:none}.mobile-nav{display:block;position:relative}.mobile-nav summary{cursor:pointer;padding:10px;font-size:14px;font-weight:700}.mobile-nav__panel{position:absolute;right:0;top:55px;width:260px;background:#141b25;padding:20px;border:1px solid #465364;box-shadow:0 15px 40px #0006}.mobile-nav__panel ul{margin:0 0 20px}.mobile-nav__panel nav a{display:block;padding:8px}.site-header__actions{margin-left:auto}.site-footer__grid{grid-template-columns:2fr 1fr;gap:30px}.site-header__inner{gap:16px}}
+@media(max-width:650px){.container{width:calc(100% - 36px)}.site-header__inner{min-height:78px;gap:6px}.brand-signature__logo{width:155px!important}.site-header .button{font-size:11px;padding:10px}.mobile-nav summary{padding:8px;font-size:12px}.home-hero__inner{padding-top:48px}.home-hero h1{font-size:clamp(4.2rem,17vw,6rem)}.eyebrow{font-size:10px}.hero-bottom{margin-top:40px;flex-wrap:wrap;gap:10px;font-size:9px}.hero-bottom span:last-child{display:none}.actions{gap:18px}.home-hero .actions{align-items:stretch;flex-direction:column}.band-inner{align-items:start;flex-direction:column;gap:15px}.section{padding:50px 0}.section-intro,.split-layout{grid-template-columns:1fr;gap:28px}.service-row{grid-template-columns:28px 1fr 18px;gap:12px}.service-row h3{font-size:1.5rem}.service-row p{font-size:15px}.simple-hero{padding:45px 0}.simple-hero h1{font-size:3.2rem}.form-grid{grid-template-columns:1fr}.site-footer__grid{grid-template-columns:1fr 1fr;gap:28px}.site-footer__grid>div:first-child{grid-column:1/-1}.site-footer__bottom-inner{flex-direction:column}.site-footer__bottom-inner p+p{margin:0}.reading-list article{grid-template-columns:28px 1fr;gap:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Light navigation keeps the supplied logo and links clear. */
+.site-header{background:#fff;color:#222833;border-bottom-color:#d8dde4}
+.site-nav a:hover,.site-nav .is-current{color:#0050d0}
+.mobile-nav__panel{background:#fff;color:#222833;border-color:#d8dde4;box-shadow:0 15px 40px #17212e26}
+.mobile-nav__panel a:hover,.mobile-nav__panel .is-current{color:#0050d0}
+.mobile-nav__panel .button,.site-header__actions .button{color:#fff}
+
+/* Compact header spacing. */
+.site-header__inner{min-height:78px}
+.site-header .brand-signature__logo{width:220px}
+.site-nav a{padding-block:25px}
+.site-header .button{padding:10px 16px}
+@media(max-width:650px){
+  .site-header__inner{min-height:66px}
+  .site-header .button{padding:8px 10px}
+}
+
+/* Give the logo more presence within the compact navigation. */
+.site-header .brand-signature__logo{width:270px;max-width:270px}
+@media(max-width:650px){
+  .site-header .brand-signature__logo{width:180px!important;max-width:180px}
+}
+@media(max-width:374px){
+  .site-header .brand-signature__logo{width:160px!important;max-width:160px}
+}
+
+/* Trim the lower edge of the navigation. */
+.site-header__inner{min-height:72px}
+.site-nav a{padding-bottom:19px}
+@media(max-width:650px){
+  .site-header__inner{min-height:60px}
+}
+
+/* Further tighten the navbar's lower spacing. */
+.site-header__inner{min-height:66px}
+.site-nav a{padding-bottom:13px}
+@media(max-width:650px){
+  .site-header__inner{min-height:54px}
+}
+
+/* Remove inline baseline space so the logo centers vertically. */
+.site-header__brand{display:flex;align-items:center;align-self:center}
+.site-header__brand .brand-signature{display:flex;align-items:center}
+
+/* Offset the logo with more space above than below. */
+.site-header__brand{padding-top:8px;padding-bottom:2px}
+.site-header__brand{padding-top:5px}
+
+/* Anchor the active navigation indicator to the header's lower edge. */
+.site-nav{align-self:stretch;display:flex;align-items:stretch}
+.site-nav ul{align-items:stretch}
+.site-nav li{display:flex}
+.site-nav a{display:flex;align-items:center;padding-block:0;border-bottom-width:4px;padding-top:4px}
+@media(max-width:1100px){.site-nav{display:none}}
+
+/* Let the indicator meet the navbar's outer bottom edge. */
+.site-nav{margin-bottom:-1px}
+
+/* Extend the navigation indicator slightly beyond each label. */
+.site-nav a{border-bottom-width:5px;padding-top:5px;padding-inline:4px;margin-inline:-4px}
+
+.site-footer .footer-logo{width:290px;max-width:100%;height:auto}
+.site-footer__description,.site-footer__list,.site-footer__bottom-inner{color:#fff}
+
+/* Tighten the spacing around the navigation logo. */
+.site-header__brand{padding-top:1px;padding-bottom:0}
+.site-header__inner{min-height:60px}
+@media(max-width:650px){
+  .site-header__inner{min-height:50px}
+}
+
+/* Offset bars echo the blue lines in the Wright 2 logo. */
+.mobile-nav{flex-shrink:0}
+.mobile-nav summary{display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;list-style:none;border:1px solid #dce3ec;border-radius:12px;background:#f3f6fa;transition:background .18s,border-color .18s}
+.mobile-nav summary::-webkit-details-marker{display:none}
+.mobile-nav summary::marker{content:''}
+.menu-mark{position:relative;display:block;width:23px;height:18px}
+.menu-mark span{position:absolute;right:0;height:3px;border-radius:3px;transition:transform .2s,width .2s,background .2s}
+.menu-mark span:first-child{top:4px;width:23px;background:#17212e}
+.menu-mark span:last-child{top:12px;width:15px;background:#0058e8}
+.mobile-nav summary:hover{background:#e8edf2;border-color:#8aaff0}
+.mobile-nav[open] summary{background:#e8edf2;border-color:#8aaff0}
+.mobile-nav[open] .menu-mark span:first-child{transform:translateY(4px) rotate(45deg);background:#0058e8}
+.mobile-nav[open] .menu-mark span:last-child{width:23px;transform:translateY(-4px) rotate(-45deg)}
+.mobile-nav__panel{top:calc(100% + 12px);border-radius:12px;max-width:calc(100vw - 36px)}
+@media(max-width:374px){.site-header .brand-signature__logo{width:125px!important;max-width:125px}}
+
+/* Keep the menu icon unboxed while preserving its full tap target. */
+.mobile-nav summary,
+.mobile-nav summary:hover,
+.mobile-nav[open] summary{background:transparent;border-color:transparent;box-shadow:none}
+
+/* Smaller logo and a slimmer navigation bar. */
+.site-header .brand-signature__logo{width:225px;max-width:225px}
+.site-header__inner{min-height:54px}
+.site-header__brand{padding:0}
+@media(max-width:650px){
+  .site-header .brand-signature__logo{width:150px!important;max-width:150px}
+  .site-header__inner{min-height:48px}
+}
+@media(max-width:374px){
+  .site-header .brand-signature__logo{width:120px!important;max-width:120px}
+}
+
+/* Increase the footer logo slightly. */
+.site-footer .footer-logo{width:330px}
+
+/* Industry imagery with a readable copy area. */
+.home-hero{position:relative;isolation:isolate;overflow:hidden;background:#101216}
+.home-hero__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:65% center;z-index:-2}
+.home-hero::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(9,15,23,.94),rgba(9,15,23,.77) 36%,rgba(9,15,23,.18) 75%),linear-gradient(0deg,rgba(9,15,23,.75),transparent 45%)}
+.home-hero h1{font-size:clamp(4rem,7.2vw,7rem)}
+.home-hero .hero-copy{max-width:510px;color:#d3dbe7}
+.home-hero .lead{max-width:540px}
+.home-hero .button--secondary{background:#101820b3}
+@media(max-width:650px){
+ .home-hero__image{object-position:62% center;opacity:.6}
+ .home-hero::before{background:linear-gradient(90deg,rgba(9,15,23,.85),rgba(9,15,23,.5)),linear-gradient(0deg,#101216,transparent 70%)}
+ .home-hero h1{font-size:clamp(4rem,16vw,6rem)}
+}
+
+/* Slightly wider navbar logo. */
+.site-header .brand-signature__logo{width:245px;max-width:245px}
+@media(max-width:650px){
+  .site-header .brand-signature__logo{width:160px!important;max-width:160px}
+}
+@media(max-width:374px){
+  .site-header .brand-signature__logo{width:125px!important;max-width:125px}
+}
+
+/* Wider logo with its built-in vertical whitespace tucked into the header. */
+.site-header .brand-signature__logo{width:265px;max-width:265px;margin-block:-9px}
+.site-header__brand{padding-block:0;margin-block:0}
+.site-header__inner{min-height:54px}
+@media(max-width:650px){
+  .site-header .brand-signature__logo{width:170px!important;max-width:170px;margin-block:-5px}
+  .site-header__inner{min-height:48px}
+}
+@media(max-width:374px){
+  .site-header .brand-signature__logo{width:130px!important;max-width:130px;margin-block:-3px}
+}
+
+/* Keep the wider logo fully contained in a compact header. */
+.site-header .brand-signature__logo{margin-block:0;height:64px;object-fit:contain}
+.site-header__inner{min-height:64px}
+@media(max-width:650px){
+  .site-header .brand-signature__logo{margin-block:0;height:48px}
+  .site-header__inner{min-height:48px}
+}
+@media(max-width:374px){
+  .site-header .brand-signature__logo{margin-block:0;height:44px}
+}
+
+/* Blend the footer logo's black canvas into the surrounding surface. */
+.site-footer .footer-logo{mix-blend-mode:screen}
+
+/* Give the navbar logo a wider display area. */
+.site-header .brand-signature__logo{width:290px;max-width:290px;height:auto}
+@media(max-width:650px){
+  .site-header .brand-signature__logo{width:180px!important;max-width:180px;height:auto}
+}
+@media(max-width:374px){
+  .site-header .brand-signature__logo{width:135px!important;max-width:135px}
+}
+
+/* Blue gradients echo the highlight and deep blue shading in the logo. */
+:root{--brand-gradient:linear-gradient(135deg,#087aff 0%,#0058e8 45%,#003b9e 100%)}
+.button--primary,button.button,.recruit-band{background:var(--brand-gradient)}
+.button--primary:hover,button.button:hover{background:linear-gradient(135deg,#086ce0 0%,#004dcc 45%,#002f80 100%)}
+.home-hero h1 span{background:linear-gradient(180deg,#3898ff 0%,#087aff 40%,#0050d5 100%);background-clip:text;-webkit-background-clip:text;color:transparent}
+.site-nav a{position:relative;border-bottom-color:transparent!important}
+.site-nav a::after{content:'';position:absolute;left:0;right:0;bottom:-5px;height:5px;background:var(--brand-gradient);opacity:0}
+.site-nav a.is-current::after,.site-nav a:hover::after{opacity:1}
+.menu-mark span:last-child,.mobile-nav[open] .menu-mark span:first-child{background:var(--brand-gradient)}
+@media(forced-colors:active){
+ .home-hero h1 span{background:none;color:CanvasText}
+ .site-nav a.is-current{border-bottom-color:Highlight!important}
+}
+
+/* Crop only the original logo's empty vertical canvas; preserve all artwork. */
+.site-header__brand .brand-signature{
+  width:290px;
+  aspect-ratio:2172 / 500;
+  overflow:hidden;
+  align-items:flex-start;
+}
+.site-header .brand-signature__logo{
+  display:block;
+  width:100%;
+  max-width:none;
+  height:auto;
+  flex-shrink:0;
+  margin:0;
+  transform:translateY(-11.878453%);
+}
+@media(max-width:650px){
+  .site-header__brand .brand-signature{width:180px}
+  .site-header .brand-signature__logo{width:100%!important;max-width:none;height:auto;margin:0}
+}
+@media(max-width:374px){
+  .site-header__brand .brand-signature{width:135px}
+}
+
+/* Add a little breathing room around the cropped navbar logo. */
+.site-header__inner{min-height:78px}
+@media(max-width:650px){
+  .site-header__inner{min-height:56px}
+}
+
+/* Display the supplied footer artwork in its original colors. */
+.site-footer .footer-logo{mix-blend-mode:normal}
+
+/* Page-specific industry photography, independent of the homepage hero. */
+.simple-hero--image{position:relative;isolation:isolate;overflow:hidden;min-height:440px;display:flex;align-items:center;padding-block:70px;background:#101216}
+.simple-hero__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--hero-position,70% center);z-index:-2}
+.simple-hero--image::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(8,14,22,.94) 0%,rgba(8,14,22,.8) 40%,rgba(8,14,22,.15) 80%),linear-gradient(0deg,rgba(8,14,22,.35),transparent 60%)}
+.simple-hero--image h1{max-width:720px;font-size:clamp(3.2rem,5.5vw,5.4rem)}
+.simple-hero--image .lead{max-width:640px;color:#e1e7ef;font-size:1.2rem}
+.simple-hero--image .eyebrow{color:#94b9ff}
+@media(max-width:650px){
+ .simple-hero--image{min-height:420px;padding-block:45px}
+ .simple-hero--image h1{font-size:clamp(2.8rem,11vw,3.7rem)}
+ .simple-hero--image::before{background:linear-gradient(90deg,rgba(8,14,22,.9),rgba(8,14,22,.65))}
+}

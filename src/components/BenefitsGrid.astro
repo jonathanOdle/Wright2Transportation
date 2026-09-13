@@ -1,0 +1,24 @@
+---
+import type { DriverBenefit } from '../data/company';
+
+interface Props {
+	benefits: DriverBenefit[];
+	fallback?: string;
+}
+
+const { benefits, fallback } = Astro.props;
+---
+
+{benefits.length > 0 ? (
+	<div class="benefit-grid">
+		{benefits.map((benefit) => (
+			<article class="benefit-card">
+				<p class="benefit-card__label">{benefit.label}</p>
+				<p class="benefit-card__value">{benefit.value}</p>
+				{benefit.note && <p class="benefit-card__note">{benefit.note}</p>}
+			</article>
+		))}
+	</div>
+) : (
+	fallback && <p class="section-note">{fallback}</p>
+)}

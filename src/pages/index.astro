@@ -1,11 +1,25 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import ButtonLink from '../components/ButtonLink.astro';
 ---
-
 <Layout>
-	<Welcome />
+  <section class="home-hero">
+    <img class="home-hero__image" src="/images/dry-bulk-hero.webp" width="2172" height="724" alt="Illustrative image of a dry bulk tractor-trailer near an industrial plant at dawn" fetchpriority="high" decoding="async" />
+    <div class="container home-hero__inner">
+      <p class="eyebrow">Texas trucking · Fly ash & dry bulk</p>
+      <h1>Driving Texas<br /><span>forward.</span></h1>
+      <p class="lead">We haul the materials that keep Texas building.</p>
+      <p class="hero-copy">Professional fly ash and dry bulk transportation for the concrete, cement, and construction-material industries.</p>
+      <div class="actions"><ButtonLink href="/drivers" analyticsEvent="drive_with_us_clicked">Drive With Wright 2 <span aria-hidden="true">↗</span></ButtonLink><ButtonLink href="/services" variant="secondary">Transportation Services</ButtonLink></div>
+      <div class="hero-bottom"><span>DRY BULK TRANSPORTATION</span><span>BUILT AROUND TEXAS</span><span>DRIVING A STRONGER TOMORROW</span></div>
+    </div>
+  </section>
+  <section class="recruit-band"><div class="container band-inner"><div><p class="eyebrow">For professional CDL drivers</p><h2>Your next mile starts here.</h2></div><a href="/drivers">Explore driver opportunities <span aria-hidden="true">→</span></a></div></section>
+  <section class="section section--light"><div class="container"><div class="section-intro"><div><p class="eyebrow">The work we do</p><h2>Specialized hauling.<br />Straightforward service.</h2></div><p>From material terminals to concrete plants, Wright 2 Transportation supports the industries helping build Texas.</p></div><div class="service-list">{[
+    ['01','Fly ash transportation','Moving fly ash for concrete and cement-related operations.'],
+    ['02','Dry bulk transportation','Specialized transportation for appropriate powdered and dry bulk materials.'],
+    ['03','Recurring hauling needs','Talk with us about material movements between plants, terminals, and customer locations.']
+  ].map(([number,title,body])=><a href="/services" class="service-row"><span class="row-number">{number}</span><div><h3>{title}</h3><p>{body}</p></div><span aria-hidden="true">↗</span></a>)}</div></div></section>
+  <section class="section"><div class="container split-layout"><div><p class="eyebrow">People behind the wheel</p><h2>Take pride<br />in every mile.</h2></div><div><p class="lead">Specialized work takes dependable people.</p><p>Interested in driving with Wright 2? Learn about the work and tell us about your CDL experience. Our team can discuss available opportunities, requirements, and the details that matter to you.</p><div class="actions"><ButtonLink href="/drivers#application">Apply to Drive →</ButtonLink><a class="text-link" href="/safety">Our approach to safety</a></div></div></div></section>
+  <section class="section section--light"><div class="container split-layout"><div><p class="eyebrow">Texas roads. Texas industry.</p><h2>Let's get<br />to work.</h2></div><div><p class="lead">Need dry bulk transportation?</p><p>Tell us what you need moved, where it needs to go, and when. Start a conversation about your transportation requirements.</p><div class="actions"><ButtonLink href="/contact">Contact Our Team →</ButtonLink></div></div></div></section>
 </Layout>

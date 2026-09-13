@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#0A0D11"/>
+  <rect x="48" y="48" width="1104" height="534" rx="28" fill="url(#bg)" stroke="rgba(255,255,255,0.12)"/>
+  <path d="M105 510H1095" stroke="#1778F2" stroke-width="8" stroke-dasharray="28 18" opacity="0.55"/>
+  <text x="88" y="170" fill="#1778F2" font-family="Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="6">TEXAS DRY BULK TRUCKING</text>
+  <text x="88" y="282" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="84" font-style="italic" font-weight="800">Wright 2</text>
+  <text x="88" y="358" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="54" font-style="italic" font-weight="700">Transportation</text>
+  <text x="88" y="430" fill="#D8DDE6" font-family="Arial, sans-serif" font-size="28">Professional fly ash and dry bulk transportation serving Texas.</text>
+  <defs>
+    <linearGradient id="bg" x1="600" y1="48" x2="600" y2="582" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#11161C"/>
+      <stop offset="1" stop-color="#17212C"/>
+    </linearGradient>
+  </defs>
+</svg>

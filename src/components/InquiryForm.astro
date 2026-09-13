@@ -1,0 +1,37 @@
+---
+interface Props { kind: 'driver' | 'transportation'; }
+const {kind}=Astro.props;
+const driver=kind==='driver';
+const endpoint=driver?import.meta.env.PUBLIC_DRIVER_FORM_ENDPOINT:import.meta.env.PUBLIC_TRANSPORTATION_FORM_ENDPOINT;
+const basics=driver?[
+ ['firstName','First name','text',true,'given-name'],['lastName','Last name','text',true,'family-name'],['phone','Phone','tel',true,'tel'],['email','Email','email',true,'email'],['city','City','text',true,'address-level2'],['state','State','text',true,'address-level1'],['zip','ZIP code','text',true,'postal-code']
+]:[['company','Company name','text',true,'organization'],['name','Contact name','text',true,'name'],['phone','Phone','tel',true,'tel'],['email','Email','email',true,'email'],['pickup','Pickup location','text',true,'off'],['delivery','Delivery location','text',true,'off'],['material','Material','text',true,'off'],['volume','Estimated volume','text',false,'off'],['frequency','Frequency','text',false,'off'],['startDate','Requested start date','date',false,'off']];
+const extra=[['employer','Current / most recent employer','text'],['trucks','Types of trucks driven','text'],['trailers','Types of trailers driven','text'],['endorsements','Endorsements','text'],['location','Preferred work location','text'],['startDate','Available start date','date'],['contactTime','Best time to contact','text']];
+const choices=[['cdlClass','CDL class',['Class A','Class B','Class C','No CDL']],['experience','Years of CDL experience',['Less than 1','1–2','3–5','6–10','More than 10']],['employment','Current employment status',['Employed','Self-employed','Not currently employed']],['pneumatic','Pneumatic trailer experience',['Yes','No']],['dryBulk','Dry bulk experience',['Yes','No']],['contactMethod','Preferred contact method',['Phone','Email']]];
+---
+{!endpoint && <p class="form-notice" role="status">Online submissions are not open yet. This form shows the information our team will need; nothing will be sent until submissions are available.</p>}
+<form data-inquiry data-kind={kind} data-endpoint={endpoint || ''} novalidate>
+  <noscript><p class="form-notice">Enable JavaScript to use this form.</p></noscript>
+  <div class="form-errors" tabindex="-1" role="alert" hidden></div>
+  <div class="form-status" role="status" aria-live="polite" hidden></div>
+  <input type="hidden" name="inquiryType" value={kind}/>
+  <div class="honeypot" aria-hidden="true"><label for={`${kind}-website`}>Leave blank</label><input id={`${kind}-website`} name="website" tabindex="-1" autocomplete="off"/></div>
+  <div class="form-grid">
+    {basics.map(([name,label,type,required,autocomplete])=><div class="field"><label for={`${kind}-${name}`}>{label}{required?' *':''}</label><input id={`${kind}-${name}`} name={String(name)} type={String(type)} required={Boolean(required)} autocomplete={String(autocomplete)} maxlength={type==='text'?200:undefined} aria-describedby={`${kind}-${name}-error`}/><span class="field-error" id={`${kind}-${name}-error`} data-error-for={name}></span></div>)}
+  </div>
+  {driver && <><h3 class="form-section-title">Driving experience</h3><div class="form-grid">{choices.map(([name,label,options])=><div class="field"><label for={`${kind}-${name}`}>{label} *</label><select id={`${kind}-${name}`} name={String(name)} required aria-describedby={`${kind}-${name}-error`}><option value="">Select an option</option>{(options as string[]).map(option=><option>{option}</option>)}</select><span class="field-error" id={`${kind}-${name}-error`} data-error-for={name}></span></div>)}{extra.map(([name,label,type])=><div class="field"><label for={`${kind}-${name}`}>{label}</label><input id={`${kind}-${name}`} name={name} type={type} maxlength={200}/></div>)}</div><h3 class="form-section-title">Anything else we should know?</h3></>}
+  <div class="field" style="margin-top:20px"><label for={`${kind}-message`}>Additional information</label><textarea id={`${kind}-message`} name="message" maxlength={5000}></textarea></div>
+  {driver&&<div class="form-grid" style="margin-top:20px">{[['resume','Resume'],['supportingDocument','Supporting document']].map(([name,label])=><div class="field"><label for={name}>{label} (optional)</label><input id={name} name={name} type="file" accept=".pdf,.doc,.docx" aria-describedby={`${name}-help ${name}-error`}/><small id={`${name}-help`}>PDF or Word, up to 5 MB. Do not upload sensitive personal documents.</small><span class="field-error" id={`${name}-error`} data-error-for={name}></span></div>)}</div>}
+  <label class="consent" for={`${kind}-consent`}><input id={`${kind}-consent`} type="checkbox" name="consent" required/><span>{driver?'I consent to Wright 2 Transportation contacting me regarding employment opportunities.':'I consent to Wright 2 Transportation contacting me about this inquiry.'} *</span></label>
+  <p class="fine-print">* Required fields. Read our <a class="text-link" href="/privacy">privacy policy</a>.</p>
+  <button class="button" type="submit" disabled style="margin-top:24px"><span data-submit-label>{endpoint?(driver?'Submit Application':'Request Transportation Information'):'Submissions Not Yet Open'}</span></button>
+</form>
+<script>
+import {enhanceForm} from '../lib/form-service';
+for(const form of document.querySelectorAll<HTMLFormElement>('[data-inquiry]')){
+ const driver=form.dataset.kind==='driver';
+ enhanceForm(form,{endpoint:form.dataset.endpoint,successMessage:driver?'Thanks for your interest in Wright 2 Transportation. Our team will review your information and contact qualified applicants regarding available opportunities.':'Thank you. Our team will review your transportation inquiry and follow up using the contact information you provided.',startedEventName:driver?'driver_application_started':'transportation_inquiry_started',submittedEventName:driver?'driver_application_submitted':'transportation_inquiry_submitted',statusSelector:'.form-status',errorSelector:'.form-errors',buttonSelector:'button[type="submit"]',resetOnSuccess:true});
+ if(form.dataset.endpoint) form.querySelector<HTMLButtonElement>('button[type="submit"]')!.disabled=false;
+ for(const input of form.querySelectorAll<HTMLInputElement>('input[type="file"]')) input.addEventListener('change',()=>{const file=input.files?.[0];input.setCustomValidity(file && (file.size>5*1024*1024 || !/\.(pdf|docx?)$/i.test(file.name))?'Choose a PDF or Word document no larger than 5 MB.':'');input.reportValidity();});
+}
+</script>
