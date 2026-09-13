@@ -1,11 +1,14 @@
 ---
 import {heroImages} from '../data/hero-images';
+import { withBase } from '../lib/base-url';
 interface Props { label: string; title: string; description: string; }
 const {label,title,description}=Astro.props;
-const page=Astro.url.pathname.split('/').filter(Boolean)[0];
+const page=Astro.url.pathname.split('/').filter(Boolean).at(-1);
 const image=heroImages[page];
+const heroSrc = image ? withBase(image.src) : undefined;
+const heroSmallSrc = image ? withBase(image.src.replace('.webp','-small.webp')) : undefined;
 ---
 <section class:list={['simple-hero',image && 'simple-hero--image']} style={image ? `--hero-position:${image.position}` : undefined}>
- {image && <img class="simple-hero__image" src={image.src} srcset={`${image.src.replace('.webp','-small.webp')} 960w, ${image.src} 1920w`} sizes="100vw" width="1920" height="640" alt={image.alt} fetchpriority="high" decoding="async" />}
+ {image && <img class="simple-hero__image" src={heroSrc} srcset={`${heroSmallSrc} 960w, ${heroSrc} 1920w`} sizes="100vw" width="1920" height="640" alt={image.alt} fetchpriority="high" decoding="async" />}
  <div class="container"><p class="eyebrow">{label}</p><h1>{title}</h1><p class="lead">{description}</p><slot /></div>
 </section>
