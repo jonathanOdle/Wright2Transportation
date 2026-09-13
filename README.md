@@ -1,46 +1,41 @@
-# Astro Starter Kit: Basics
+# Wright 2 Transportation
+
+A simple static Astro website for Texas fly ash and dry bulk trucking, with driver recruiting and business inquiries.
+
+## Run
+
+Requires Node 22.12 or newer.
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
+npm run dev -- --background
+npm run astro -- dev status
+npm run astro -- dev logs
+npm run astro -- dev stop
+npm run build
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Deploy the generated `dist/` directory to a static host. Configure the host to serve `404.html` for missing pages.
 
-## 🚀 Project Structure
+## Company information
 
-Inside of your Astro project, you'll see the following folders and files:
+Edit `src/data/company.ts` for the supplied logo, contacts, navigation, services, company story, and confirmed driver benefits. Keep unknown information empty. The supplied logo is stored in `public/brand/w2t.png`. No invented fleet photos or company statistics are used.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+## Form delivery
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Copy `.env.example` to `.env` and configure separate public HTTPS endpoints for driver and transportation forms, then rebuild. These endpoints are visible in the browser and must not contain secrets. Until configured, forms explicitly indicate submissions are unavailable and their submit buttons remain disabled.
 
-## 🧞 Commands
+Forms send multipart/form-data, including an `inquiryType`, a `website` honeypot, consent, and named fields from `InquiryForm.astro`. A successful HTTP response indicates acceptance; non-success responses display an error without clearing inputs. Requests time out after 30 seconds. Files are optional PDF/Word documents, with a 5 MB client limit per file.
 
-All commands are run from the root of the project, from a terminal:
+Before enabling delivery, implement server-side validation, request/file size limits, allowed file types, secure storage, rate limiting, honeypot verification, and appropriate CORS. Add any provider-specific spam token through FormData in `src/lib/form-service.ts` and verify it at the endpoint. Browser validation is not a security boundary. Never include submission contents in analytics or application logs. Test real delivery with the selected provider before launch.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Launch configuration
 
-## 👀 Want to learn more?
+- Supply verified company and recruiting contact details.
+- Set PUBLIC_SITE_URL to enable canonical links and the generated sitemap.
+- Connect and test form endpoints.
+- Review the draft privacy and terms pages against actual practices before launch.
+- Optionally set a real PUBLIC_GA4_MEASUREMENT_ID after deciding applicable analytics/consent practices. Analytics is off by default.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Frontend analytics events are prepared for driver application start/submission, transportation inquiry submission, and tagged recruiting links. No fake measurement IDs or job postings are published.
+# Wright2Transportation
