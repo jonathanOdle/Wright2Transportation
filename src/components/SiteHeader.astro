@@ -2,6 +2,7 @@
 import BrandSignature from './BrandSignature.astro';
 import ButtonLink from './ButtonLink.astro';
 import { company, hasValue } from '../data/company';
+import { withBase } from '../lib/base-url';
 
 interface Props {
 	currentPath: string;
@@ -15,7 +16,7 @@ const recruitingPhoneHref = hasValue(company.contacts.recruitingPhone)
 
 <header class="site-header">
 	<div class="container site-header__inner">
-		<a class="site-header__brand" href="/" aria-label={`${company.name} home`}>
+		<a class="site-header__brand" href={withBase('/')} aria-label={`${company.name} home`}>
 			<BrandSignature showTagline={false} />
 		</a>
 
@@ -23,7 +24,7 @@ const recruitingPhoneHref = hasValue(company.contacts.recruitingPhone)
 			<ul>
 				{company.navigation.map((item) => (
 					<li>
-						<a aria-current={currentPath === item.href ? "page" : undefined} class:list={[currentPath === item.href && 'is-current', item.highlight && 'is-highlight']} href={item.href}>
+						<a aria-current={currentPath === item.href ? "page" : undefined} class:list={[currentPath === item.href && 'is-current', item.highlight && 'is-highlight']} href={withBase(item.href)}>
 							{item.label}
 						</a>
 					</li>
@@ -49,7 +50,7 @@ const recruitingPhoneHref = hasValue(company.contacts.recruitingPhone)
 					<ul>
 						{company.navigation.map((item) => (
 							<li>
-								<a aria-current={currentPath === item.href ? "page" : undefined} class:list={[currentPath === item.href && 'is-current', item.highlight && 'is-highlight']} href={item.href}>
+								<a aria-current={currentPath === item.href ? "page" : undefined} class:list={[currentPath === item.href && 'is-current', item.highlight && 'is-highlight']} href={withBase(item.href)}>
 									{item.label}
 								</a>
 							</li>

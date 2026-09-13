@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import SimpleHero from '../components/SimpleHero.astro';
 import ButtonLink from '../components/ButtonLink.astro';
 import {company} from '../data/company';
+import { withBase } from '../lib/base-url';
 export function getStaticPaths(){return ['services','equipment','safety','about','privacy','terms','accessibility'].map(page=>({params:{page}}));}
 const pages = {
  services: {title:'Fly Ash & Dry Bulk Transportation Texas', heading:'Hauling that keeps business moving.', description:'Professional dry bulk transportation supporting Texas concrete, cement, and construction-material operations.', items:company.serviceDetails},
@@ -16,4 +17,4 @@ const pages = {
 const page=Astro.params.page as keyof typeof pages;
 const content=pages[page];
 ---
-<Layout title={content.title} pathname={`/${page}`} description={content.description} noindex={['privacy','terms'].includes(page)}><SimpleHero label={page} title={content.heading} description={content.description}/><section class="section section--light"><div class="container reading-list">{content.items.map((item,index)=><article><span class="row-number">{String(index+1).padStart(2,'0')}</span><div><h2>{item.title}</h2><p>{item.body}</p></div></article>)}{['services','equipment','safety','about'].includes(page)&&<div class="actions"><ButtonLink href="/contact">Talk With Wright 2 →</ButtonLink><a href="/drivers" class="text-link">Interested in driving?</a></div>}</div></section></Layout>
+<Layout title={content.title} pathname={`/${page}`} description={content.description} noindex={['privacy','terms'].includes(page)}><SimpleHero label={page} title={content.heading} description={content.description}/><section class="section section--light"><div class="container reading-list">{content.items.map((item,index)=><article><span class="row-number">{String(index+1).padStart(2,'0')}</span><div><h2>{item.title}</h2><p>{item.body}</p></div></article>)}{['services','equipment','safety','about'].includes(page)&&<div class="actions"><ButtonLink href="/contact">Talk With Wright 2 →</ButtonLink><a href={withBase('/drivers')} class="text-link">Interested in driving?</a></div>}</div></section></Layout>

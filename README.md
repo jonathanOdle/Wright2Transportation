@@ -17,6 +17,21 @@ npm run build
 
 Deploy the generated `dist/` directory to a static host. Configure the host to serve `404.html` for missing pages.
 
+## Quick GitHub Pages test
+
+This repo includes a GitHub Pages workflow at [`.github/workflows/github-pages.yml`](.github/workflows/github-pages.yml). It publishes the built static site on pushes to `main` or `master`, and also supports manual runs from the Actions tab.
+
+For a project-style GitHub Pages site, the workflow sets:
+
+- `PUBLIC_SITE_URL` to the final Pages URL for canonical links and sitemap generation.
+- `PUBLIC_SITE_BASE` to the repository name so internal links and assets work under the subpath.
+
+If you want to preview locally with the same settings, run:
+
+```sh
+PUBLIC_SITE_URL="https://your-username.github.io/your-repo" PUBLIC_SITE_BASE="/your-repo" npm run build
+```
+
 ## Company information
 
 Edit `src/data/company.ts` for the supplied logo, contacts, navigation, services, company story, and confirmed driver benefits. Keep unknown information empty. The supplied logo is stored in `public/brand/w2t.png`. No invented fleet photos or company statistics are used.

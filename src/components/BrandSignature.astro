@@ -1,5 +1,6 @@
 ---
 import { company } from '../data/company';
+import { withBase } from '../lib/base-url';
 
 interface Props {
 	compact?: boolean;
@@ -12,7 +13,7 @@ const { compact = false, showTagline = true, className = '' } = Astro.props;
 
 <div class={`brand-signature ${compact ? 'brand-signature--compact' : ''} ${className}`.trim()}>
 	{company.brand.logoPath ? (
-		<img class="brand-signature__logo" width="2172" height="724" src={company.brand.logoPath} alt={company.brand.logoAlt} />
+		<img class="brand-signature__logo" width="2172" height="724" src={withBase(company.brand.logoPath)} alt={company.brand.logoAlt} />
 	) : (
 		<div class="brand-signature__lockup" aria-label={company.name}>
 			<span class="brand-signature__road" aria-hidden="true"></span>

@@ -4,6 +4,7 @@ import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import StructuredData from '../components/StructuredData.astro';
 import { company } from '../data/company';
+import { withBase } from '../lib/base-url';
 import '../styles/global.css';
 
 interface Props {
@@ -32,7 +33,7 @@ const pageTitle = pathname === '/' || title.includes(company.name) ? title : `${
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
 		<meta name="description" content={description} />

@@ -1,5 +1,6 @@
 ---
 import ButtonLink from './ButtonLink.astro';
+import { withBase } from '../lib/base-url';
 
 interface Action {
 	href: string;
@@ -73,7 +74,7 @@ const {
 					<span class="hero__truck-trailer"></span>
 					<span class="hero__truck-road"></span>
 				</div>
-				{showTexasMark && <img class="hero__texas" src="/brand/texas-outline.svg" alt="" />}
+				{showTexasMark && <img class="hero__texas" src={withBase('/brand/texas-outline.svg')} alt="" />}
 			</div>
 		</div>
 	</div>

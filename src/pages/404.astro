@@ -2,5 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import SimpleHero from '../components/SimpleHero.astro';
 import ButtonLink from '../components/ButtonLink.astro';
+import { withBase } from '../lib/base-url';
 ---
-<Layout title="Page Not Found" pathname="/404" noindex><SimpleHero label="404 · Page not found" title="Let's get you back on the road." description="This page may have moved, or the address may be incorrect."><div class="actions"><ButtonLink href="/">Back to Home</ButtonLink><ButtonLink href="/drivers" variant="secondary">Driver Opportunities</ButtonLink></div></SimpleHero></Layout>
+<Layout title="Page Not Found" pathname="/404" noindex><SimpleHero label="404 · Page not found" title="Let's get you back on the road." description="This page may have moved, or the address may be incorrect."><div class="actions"><ButtonLink href={withBase('/')}>Back to Home</ButtonLink><ButtonLink href={withBase('/drivers')} variant="secondary">Driver Opportunities</ButtonLink></div></SimpleHero></Layout>

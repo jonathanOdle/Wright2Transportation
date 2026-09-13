@@ -1,5 +1,6 @@
 ---
 import { company, hasValue } from '../data/company';
+import { withBase } from '../lib/base-url';
 
 const mainPhoneHref = hasValue(company.contacts.mainPhone) ? `tel:${company.contacts.mainPhone.replace(/[^\d+]/g, '')}` : '';
 const mainEmailHref = hasValue(company.contacts.businessEmail) ? `mailto:${company.contacts.businessEmail}` : '';
@@ -8,8 +9,8 @@ const mainEmailHref = hasValue(company.contacts.businessEmail) ? `mailto:${compa
 <footer class="site-footer">
 	<div class="container site-footer__grid">
 		<div>
-			<a class="site-footer__brand" href="/" aria-label={`${company.name} home`}>
-				<img class="footer-logo" src={company.brand.footerLogoPath} alt="Wright 2 Transportation — Driving a Stronger Tomorrow" width="1536" height="1024" loading="lazy" />
+			<a class="site-footer__brand" href={withBase('/')} aria-label={`${company.name} home`}>
+				<img class="footer-logo" src={withBase(company.brand.footerLogoPath)} alt="Wright 2 Transportation — Driving a Stronger Tomorrow" width="1536" height="1024" loading="lazy" />
 			</a>
 			<p class="site-footer__description">Professional dry bulk transportation serving Texas.</p>
 		</div>
@@ -18,7 +19,7 @@ const mainEmailHref = hasValue(company.contacts.businessEmail) ? `mailto:${compa
 			<p class="site-footer__title">Navigate</p>
 			<ul class="site-footer__list">
 				{company.navigation.map((item) => (
-					<li><a href={item.href}>{item.label}</a></li>
+					<li><a href={withBase(item.href)}>{item.label}</a></li>
 				))}
 			</ul>
 		</div>
@@ -39,7 +40,7 @@ const mainEmailHref = hasValue(company.contacts.businessEmail) ? `mailto:${compa
 				{company.contacts.addressLines.map((line) => (
 					<li>{line}</li>
 				))}
-				{!mainPhoneHref && !mainEmailHref && !hasValue(company.contacts.addressLines) && <li><a href="/contact">Transportation inquiries →</a></li><li><a href="/drivers#application">Driver applications →</a></li>}
+				{!mainPhoneHref && !mainEmailHref && !hasValue(company.contacts.addressLines) && <li><a href={withBase('/contact')}>Transportation inquiries →</a></li><li><a href={withBase('/drivers#application')}>Driver applications →</a></li>}
 			</ul>
 		</div>
 
@@ -47,7 +48,7 @@ const mainEmailHref = hasValue(company.contacts.businessEmail) ? `mailto:${compa
 			<p class="site-footer__title">More</p>
 			<ul class="site-footer__list">
 				{company.footerLinks.map((item) => (
-					<li><a href={item.href}>{item.label}</a></li>
+					<li><a href={withBase(item.href)}>{item.label}</a></li>
 				))}
 				{company.socialLinks.map((link) => (
 					<li><a href={link.href}>{link.label}</a></li>

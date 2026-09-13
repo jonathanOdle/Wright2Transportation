@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../lib/base-url';
+
 interface Props {
 	href: string;
 	variant?: 'primary' | 'secondary' | 'ghost';
@@ -8,10 +10,11 @@ interface Props {
 }
 
 const { href, variant = 'primary', analyticsEvent, className = '', newTab = false } = Astro.props;
+const resolvedHref = withBase(href);
 ---
 
 <a
-	href={href}
+	href={resolvedHref}
 	class={`button button--${variant} ${className}`.trim()}
 	{...(analyticsEvent ? { 'data-analytics-event': analyticsEvent } : {})}
 	{...(newTab ? { target: '_blank', rel: 'noreferrer' } : {})}
