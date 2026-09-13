@@ -32,6 +32,8 @@ If you want to preview locally with the same settings, run:
 PUBLIC_SITE_URL="https://your-username.github.io/your-repo" PUBLIC_SITE_BASE="/your-repo" npm run build
 ```
 
+That setup is also a good quick way to verify a small deployment change before moving on to anything larger.
+
 ## Company information
 
 Edit `src/data/company.ts` for the supplied logo, contacts, navigation, services, company story, and confirmed driver benefits. Keep unknown information empty. The supplied logo is stored in `public/brand/w2t.png`. No invented fleet photos or company statistics are used.
