@@ -2,13 +2,14 @@
 import BrandSignature from './BrandSignature.astro';
 import ButtonLink from './ButtonLink.astro';
 import { company, hasValue } from '../data/company';
-import { withBase } from '../lib/base-url';
+import { normalizePath, withBase } from '../lib/base-url';
 
 interface Props {
 	currentPath: string;
 }
 
 const { currentPath } = Astro.props;
+const activePath = normalizePath(currentPath);
 const recruitingPhoneHref = hasValue(company.contacts.recruitingPhone)
 	? `tel:${company.contacts.recruitingPhone.replace(/[^\d+]/g, '')}`
 	: '';
@@ -24,7 +25,7 @@ const recruitingPhoneHref = hasValue(company.contacts.recruitingPhone)
 			<ul>
 				{company.navigation.map((item) => (
 					<li>
-						<a aria-current={currentPath === item.href ? "page" : undefined} class:list={[currentPath === item.href && 'is-current', item.highlight && 'is-highlight']} href={withBase(item.href)}>
+						<a aria-current={activePath === normalizePath(item.href) ? "page" : undefined} class:list={[activePath === normalizePath(item.href) && 'is-current', item.highlight && 'is-highlight']} href={withBase(item.href)}>
 							{item.label}
 						</a>
 					</li>
@@ -50,7 +51,7 @@ const recruitingPhoneHref = hasValue(company.contacts.recruitingPhone)
 					<ul>
 						{company.navigation.map((item) => (
 							<li>
-								<a aria-current={currentPath === item.href ? "page" : undefined} class:list={[currentPath === item.href && 'is-current', item.highlight && 'is-highlight']} href={withBase(item.href)}>
+								<a aria-current={activePath === normalizePath(item.href) ? "page" : undefined} class:list={[activePath === normalizePath(item.href) && 'is-current', item.highlight && 'is-highlight']} href={withBase(item.href)}>
 									{item.label}
 								</a>
 							</li>
