@@ -17,6 +17,22 @@ npm run build
 
 Deploy the generated `dist/` directory to a static host. Configure the host to serve `404.html` for missing pages.
 
+## AWS deployment
+
+This project includes an AWS deployment workflow at [`.github/workflows/aws-deploy.yml`](.github/workflows/aws-deploy.yml). It builds the site, syncs the static output to S3, and optionally invalidates CloudFront.
+
+The workflow expects GitHub repository variables and one secret. See [docs/aws-deployment.md](docs/aws-deployment.md) for the one-time AWS setup checklist and the exact values to add.
+
+At a minimum, you will need:
+
+- A Route 53 hosted zone for the domain.
+- An ACM certificate in `us-east-1`.
+- A private S3 bucket.
+- A CloudFront distribution.
+- An IAM role that GitHub Actions can assume through OIDC.
+
+For a custom domain, set `PUBLIC_SITE_URL` to the real public URL and `PUBLIC_SITE_BASE` to `/`.
+
 ## Quick GitHub Pages test
 
 This repo includes a GitHub Pages workflow at [`.github/workflows/github-pages.yml`](.github/workflows/github-pages.yml). It publishes the built static site on pushes to `main` or `master`, and also supports manual runs from the Actions tab.

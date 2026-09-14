@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 const site = process.env.PUBLIC_SITE_URL;
-const base = process.env.PUBLIC_SITE_BASE ?? '/';
+const base = process.env.PUBLIC_SITE_BASE?.trim() || '/';
 
 export default defineConfig({
     devToolbar: { enabled: false },
